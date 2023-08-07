@@ -9,8 +9,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "npm run generate",
-    "generate": "tsc && tsc-alias && node ./dist/src/index.js"
+    "dev": "npm run build && npm run generate",
+    "build": "tsc && tsc-alias",
+    "generate": "node ./dist/src/index.js --enable-source-maps"
   },
   "repository": {
     "type": "git",
