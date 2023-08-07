@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-map-ambience-gallery#readme",
   "dependencies": {
-    "arx-level-generator": "^1.0.0-alpha.10",
+    "arx-level-generator": "^1.0.0-alpha.11",
     "seedrandom": "^3.0.5",
     "three": "^0.155.0"
   },
