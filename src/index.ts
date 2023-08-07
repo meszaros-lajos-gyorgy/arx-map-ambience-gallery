@@ -1,4 +1,3 @@
-import path from 'node:path'
 import { ArxMap, Settings, Vector3 } from 'arx-level-generator'
 import seedrandom from 'seedrandom'
 import { MathUtils } from 'three'
@@ -9,10 +8,7 @@ const seed = '123'
 seedrandom(seed, { global: true })
 console.log(`seed: ${seed}`)
 
-const settings = new Settings({
-  outputDir: path.resolve('./output'),
-  levelIdx: 1,
-})
+const settings = new Settings()
 
 // ------------------------
 
@@ -23,7 +19,7 @@ map.player.position.adjustToPlayerHeight()
 map.player.orientation.y = MathUtils.degToRad(-90)
 map.player.withScript()
 map.hud.hide('all')
-await map.i18n.addFromFile('i18n.json')
+await map.i18n.addFromFile('i18n.json', settings)
 
 map.finalize()
 
