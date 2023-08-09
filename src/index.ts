@@ -27,13 +27,15 @@ import { createMoon } from '@/moon.js'
 import { createStoneBlocks } from '@/stoneBlock.js'
 import { createEastWestWall, createNorthSouthWall } from '@/walls.js'
 
-// const seed = Math.floor(Math.random() * 1e20).toString()
-const seed = '123'
+const seed = Math.floor(Math.random() * 1e20).toString()
 
 seedrandom(seed, { global: true })
 console.log(`seed: ${seed}`)
 
-const settings = new Settings()
+const settings = new Settings({
+  levelIdx: parseInt(process.env.levelIdx ?? '1'),
+  outputDir: process.env.outputDir,
+})
 
 // ------------------------
 
@@ -186,6 +188,8 @@ importedModels.forEach((mesh) => {
 // ------------------------
 
 map.finalize()
-map.saveToDisk(settings)
+await map.saveToDisk(settings)
 
-compile(settings)
+await compile(settings)
+
+console.log('done')
