@@ -27,15 +27,13 @@
   },
   "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-map-ambience-gallery#readme",
   "dependencies": {
-    "arx-level-generator": "^1.0.2",
+    "arx-level-generator": "^1.1.0",
     "dotenv": "^16.3.1",
-    "seedrandom": "^3.0.5",
     "three": "^0.155.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "^20.4.9",
-    "@types/seedrandom": "^3.0.5",
     "@types/three": "^0.155.0",
     "tsc-alias": "^1.8.7",
     "typescript": "^5.1.6"

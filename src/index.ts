@@ -17,7 +17,6 @@ import { loadOBJ } from 'arx-level-generator/tools/mesh'
 import { applyTransformations, compile } from 'arx-level-generator/utils'
 import { times } from 'arx-level-generator/utils/faux-ramda'
 import { pickRandom, randomBetween } from 'arx-level-generator/utils/random'
-import seedrandom from 'seedrandom'
 import { MathUtils } from 'three'
 import { ambiences } from '@/constants.js'
 import { createNECorner, createNWCorner, createSECorner, createSWCorner } from '@/corners.js'
@@ -27,14 +26,10 @@ import { createMoon } from '@/moon.js'
 import { createStoneBlocks } from '@/stoneBlock.js'
 import { createEastWestWall, createNorthSouthWall } from '@/walls.js'
 
-const seed = Math.floor(Math.random() * 1e20).toString()
-
-seedrandom(seed, { global: true })
-console.log(`seed: ${seed}`)
-
 const settings = new Settings({
   levelIdx: parseInt(process.env.levelIdx ?? '1'),
   outputDir: process.env.outputDir,
+  seed: process.env.seed,
 })
 
 // ------------------------
