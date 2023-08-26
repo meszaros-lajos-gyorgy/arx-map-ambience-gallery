@@ -1,6 +1,6 @@
 {
   "name": "arx-map-ambience-gallery",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Arx Fatalis map for exploring the game's ambiences",
   "main": "src/index.ts",
   "type": "module",
