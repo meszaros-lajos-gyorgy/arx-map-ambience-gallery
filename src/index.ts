@@ -14,7 +14,7 @@ import {
 import { Interactivity } from 'arx-level-generator/scripting/properties'
 import { createLight, createZone } from 'arx-level-generator/tools'
 import { loadOBJ } from 'arx-level-generator/tools/mesh'
-import { applyTransformations, compile } from 'arx-level-generator/utils'
+import { applyTransformations } from 'arx-level-generator/utils'
 import { times } from 'arx-level-generator/utils/faux-ramda'
 import { pickRandom, randomBetween } from 'arx-level-generator/utils/random'
 import { MathUtils } from 'three'
@@ -30,12 +30,15 @@ const settings = new Settings({
   levelIdx: parseInt(process.env.levelIdx ?? '1'),
   outputDir: process.env.outputDir,
   seed: process.env.seed,
+  variant: process.env.variant === 'premium' ? 'premium' : 'normal',
+  calculateLighting: process.env.calculateLighting === 'false' ? false : true,
+  mode: process.env.mode === 'development' ? 'development' : 'production',
+  originalLevelFiles: process.env.originalLevelFiles,
 })
 
 // ------------------------
 
 const map = new ArxMap()
-map.meta.mapName = 'Ambience Gallery'
 map.config.offset = new Vector3(2000, 0, 2000)
 map.player.position.adjustToPlayerHeight()
 map.player.orientation.y = MathUtils.degToRad(-90)
@@ -170,7 +173,7 @@ smoothMeshes.flat().forEach((mesh) => {
 const tree = await loadOBJ('models/tree/tree', {
   position: new Vector3(4770, -10, 1450),
   scale: new Vector3(0.8, 0.7, 0.8),
-  rotation: new Rotation(0, MathUtils.degToRad(70), 0),
+  orientation: new Rotation(0, MathUtils.degToRad(70), 0),
   fallbackTexture: Texture.l2TrollWoodPillar08,
 })
 
@@ -184,7 +187,5 @@ importedModels.forEach((mesh) => {
 
 map.finalize()
 await map.saveToDisk(settings)
-
-await compile(settings)
 
 console.log('done')
