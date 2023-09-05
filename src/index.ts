@@ -26,15 +26,7 @@ import { createMoon } from '@/moon.js'
 import { createStoneBlocks } from '@/stoneBlock.js'
 import { createEastWestWall, createNorthSouthWall } from '@/walls.js'
 
-const settings = new Settings({
-  levelIdx: parseInt(process.env.levelIdx ?? '1'),
-  outputDir: process.env.outputDir,
-  seed: process.env.seed,
-  variant: process.env.variant === 'premium' ? 'premium' : 'normal',
-  calculateLighting: process.env.calculateLighting === 'false' ? false : true,
-  mode: process.env.mode === 'development' ? 'development' : 'production',
-  originalLevelFiles: process.env.originalLevelFiles,
-})
+const settings = new Settings()
 
 // ------------------------
 
