@@ -169,7 +169,7 @@ const tree = await loadOBJ('models/tree/tree', {
   fallbackTexture: Texture.l2TrollWoodPillar08,
 })
 
-const importedModels = [...tree]
+const importedModels = [...tree.meshes]
 
 importedModels.forEach((mesh) => {
   map.polygons.addThreeJsMesh(mesh, { tryToQuadify: DONT_QUADIFY, shading: SHADING_SMOOTH })
@@ -177,7 +177,8 @@ importedModels.forEach((mesh) => {
 
 // ------------------------
 
-map.finalize()
+map.finalize(settings)
+
 await map.saveToDisk(settings)
 
 console.log('done')
