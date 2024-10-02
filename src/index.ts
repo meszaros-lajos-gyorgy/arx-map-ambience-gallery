@@ -32,7 +32,6 @@ const settings = new Settings()
 
 const map = new ArxMap()
 map.config.offset = new Vector3(2000, 0, 2000)
-map.player.position.adjustToPlayerHeight()
 map.player.orientation.y = MathUtils.degToRad(-90)
 map.player.withScript()
 map.hud.hide('all')
